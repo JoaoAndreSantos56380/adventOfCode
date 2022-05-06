@@ -86,6 +86,4 @@ public class Lanternfish {
 			o 6 (256-27)/8 = 28
 			o 7(256-35)/8 = 27
 			
-
-			
 		*/
