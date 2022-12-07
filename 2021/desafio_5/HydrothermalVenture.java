@@ -10,7 +10,7 @@ import java.io.IOException;
  * HydrothermalVenture
  */
 public class HydrothermalVenture {
-	private static String ficheiroInput = "input.txt";
+	private static String ficheiroInput = "desafio_5\\input.txt";
 	private static String ficheiroInputTeste = "inputTeste.txt";
 
 	public static void main(String[] args) throws FileNotFoundException {
@@ -65,11 +65,11 @@ public class HydrothermalVenture {
 		// marcamos todos os pontos de x1 a x2 com o y em comum (fica uma linha
 		// horizontal)
 
-		// se nem x1=x2 ou y1=y2 
-			// vamos perguntar 
+		// se nem x1=x2 ou y1=y2
+			// vamos perguntar
 				//se x1 < x2
 					// percorremos as linhas crescentemente
-						// se y1 < y2 
+						// se y1 < y2
 							// percorremos as colunas crescentemente
 						// se y1 > y2
 							// percorremos as colunas decrescentemente
