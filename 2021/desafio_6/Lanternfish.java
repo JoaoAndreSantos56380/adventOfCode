@@ -4,59 +4,99 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+//After  1 day:  2,3,2,0,1
+/*
+ * 0:1
+ * 1:1
+ * 2:2
+ * 3:
+ */
 /**
  * Lanternfish
  */
 public class Lanternfish {
-	private static String input = "input.txt";
-	private static String inputTeste = "inputTeste.txt";
+	private static String input = "desafio_6\\input.txt";
+	private static String inputTeste = "desafio_6\\inputTeste.txt";
 	public static void main(String[] args) {
-		ArrayList<Integer> listaLanternFish = new ArrayList<>();
+		HashMap<Long, Long> listaLanternFish = new HashMap<>();
 		String line;
 		String[] lineArr;
-		int size;
-		long sum = 0L;
-		int index;
-		try (BufferedReader br = new BufferedReader(new FileReader(new File(inputTeste)))) {
-			//ler um valor do .txt
-			line = br.readLine();
-			lineArr = line.split(",");
-			for (int i = 0; i < lineArr.length; i++) {
-				//simular quantos filhos vai ter
-				for (int j = 1; j <= 256; j++) {
-					//somar o valor e repetir o processo para os filhos
-					System.out.println("oal");
+		long sum = 0;
+		try (BufferedReader br = new BufferedReader(new FileReader(new File(input)))) {
+			if ((line = br.readLine()) != null) {
+				lineArr = line.split(",");
+				for (int i = 0; i < lineArr.length; i++) {
+					if (!listaLanternFish.containsKey(Long.parseLong(lineArr[i]))) {
+						listaLanternFish.put(Long.parseLong(lineArr[i]), 1L);
+					} else {
+						listaLanternFish.put(Long.parseLong(lineArr[i]), listaLanternFish.get(Long.parseLong(lineArr[i]))+1);
+					}
+				}
+				Long[] items;
+				long zeros = -1;
+				Set<Long> keySet = new HashSet<Long>(listaLanternFish.keySet());
+				items = new Long[keySet.size()];
+				items = keySet.toArray(new Long[keySet.size()]);
+				for (int i = 1; i <= 256; i++) {
+					if (listaLanternFish.containsKey(0L)) {
+						zeros = listaLanternFish.get(0L);
+					}
+					for (int j = 0; j < items.length; j++) {
+						long key = items[j];
+						if (key == 0) {
+							continue;
+						} else {
+							listaLanternFish.put(key-1, listaLanternFish.get(key));
+							listaLanternFish.put(key,0L);
+						}
+					}
+					if (items[0] == 0L) {
+						if (listaLanternFish.containsKey(6L)) {
+							listaLanternFish.put(6L, zeros + listaLanternFish.get(6L));
+						} else{
+							listaLanternFish.put(6L, zeros);
+						}
+						listaLanternFish.put(8L, zeros);
+					}
+					keySet = new HashSet<Long>(listaLanternFish.keySet());
+					items = new Long[keySet.size()];
+					items = keySet.toArray(new Long[keySet.size()]);
+				}
+				for (Long key : keySet) {
+					sum += listaLanternFish.get(key);
 				}
 			}
+			System.out.println(sum);
 		} catch (IOException e) {
 			System.out.println("No file found!");
 		}
-		//imprimir valor final
-		System.out.println(sum);
 	}
 }
-/*
-	private static String input = "input.txt";
-	private static String inputTeste = "inputTeste.txt";
 
-	public static void main(String[] args) {
+//352195
+
+//funciona mas rebenta com a RAM
+/*
+public static void main(String[] args) {
 		ArrayList<Integer> listaLanternFish = new ArrayList<>();
 		String line;
 		String[] lineArr;
 		int size;
+		int sum = 0;
 		int index;
-		try (BufferedReader br = new BufferedReader(new FileReader(new File(inputTeste)))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(new File(input)))) {
 			if ((line = br.readLine()) != null) {
 				lineArr = line.split(",");
 				for (int i = 0; i < lineArr.length; i++) {
 					listaLanternFish.add(Integer.parseInt(lineArr[i]));
 					for (int k = 1; k <= 256; k++) {
 						size = listaLanternFish.size();
-						System.out.println("iteracao " + k );
+						//System.out.println("iteracao " + k );
 						for (int j = 0; j < size; j++) {
-							index = listaLanternFish.get(j);
+						index = listaLanternFish.get(j);
 							if (index > 0) {
 								listaLanternFish.set(j, --index);
 							} else {
@@ -65,25 +105,15 @@ public class Lanternfish {
 							}
 						}
 					}
+					System.out.println(listaLanternFish.size());
+					sum += listaLanternFish.size();
 					listaLanternFish.clear();
 				}
 			}
 			System.out.println(listaLanternFish.size());
+			System.out.println(sum);
 		} catch (IOException e) {
 			System.out.println("No file found!");
 		}
 	}
 */
-
-		/*
-		3,4,3,1,2
-		3	tem	31 filhos		
-			o 1 filho do 3 tem 30 filhos
-			o 2 filhos do 3 tem 29
-			o 3 (256-3)/8 = 31
-			o 4 (256-11)/8 = 30
-			o 5 (256-19)/8 = 29
-			o 6 (256-27)/8 = 28
-			o 7(256-35)/8 = 27
-			
-		*/
