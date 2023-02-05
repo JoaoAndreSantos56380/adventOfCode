@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GiantSquid{
-	private static String t = "input_Giant_Squid.txt";
+	private static String t = "desafio_4//input_Giant_Squid.txt";
 	private static String t2 = "teste.txt";
 	public static void main(String[] args) {
+		
 		Matriz ultimaMatrizRemovida = null;
 		String line;
 		String[] linhaNumeros = null;
@@ -40,7 +41,7 @@ public class GiantSquid{
 						matrizes.get(matrizes.size()-1).addLine(line, numeroDeLinhas);
 						numeroDeLinhas++;
 					}
-				}	
+				}
 			}
 		} catch (IOException e) {
 			//e.printStackTrace();
@@ -77,10 +78,10 @@ public class GiantSquid{
 		for (int i = 0; i < linhaNumeros.length && !fimDoJogo; i++) {
 			winningNumber = Integer.parseInt(linhaNumeros[i]);
 			for (int j = 0; j < matrizes.size() && !fimDoJogo; j++) {
-				// se existir 
-				// remover da matriz 
+				// se existir
+				// remover da matriz
 				matrizes.get(j).containsValue(Integer.parseInt(linhaNumeros[i]));
-				// perguntar se ha algum vencedor 
+				// perguntar se ha algum vencedor
 				fimDoJogo = verificaVitoria(matrizes);
 				if (fimDoJogo) {
 					// se houver guardar o ultimo numero que foi colocado
@@ -110,7 +111,7 @@ public class GiantSquid{
 	}
 }
 /*
-Sera que funciona guardar na matriz (classe) o ultimo elementos que lhe foi removido. 
-Assim removemos todas as primerias matrizes e guardamos a matriz removida. 
+Sera que funciona guardar na matriz (classe) o ultimo elementos que lhe foi removido.
+Assim removemos todas as primerias matrizes e guardamos a matriz removida.
 Depois somamos os elementos não marcados e multiplicamos pelo ultimo elemento removido.
 */
