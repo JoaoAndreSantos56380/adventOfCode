@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SonarSweepTwo {
-	private static String filename = "input_Sonar_Sweep.txt";
-	private static String filenameOutput = "output_Sonar_Sweep.txt";
+	private static String filename = "desafio_1\\input_Sonar_Sweep.txt";
+	private static String filenameOutput = "desafio_1\\output_Sonar_Sweep.txt";
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new FileReader(new File(filename)));
 		PrintWriter pw = new PrintWriter(new File(filenameOutput));
 		int primeiro = Integer.parseInt(br.readLine());
 		int segundo = Integer.parseInt(br.readLine());
-		String terceiroString; 
+		String terceiroString;
 		int terceiro = -1;
 		while ( ( terceiroString = br.readLine() ) != null) {
 			terceiro = Integer.parseInt(terceiroString);
@@ -24,7 +24,6 @@ public class SonarSweepTwo {
 			segundo = terceiro;
 		}
 		pw.close();
-
 		System.out.println(SonarSweepOne.calculateNumberOfIncreases(filenameOutput));
 	}
 	/*

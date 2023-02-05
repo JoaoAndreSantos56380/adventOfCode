@@ -13,13 +13,11 @@ public class SonarSweepOne{
 		int currentMeasurementInt;
 		int previousMeasurement = Integer.parseInt(br.readLine());
 		int count = 0;
-		int numberOfLines = 0;
 		while((currentMeasurement = br.readLine()) != null){
 			currentMeasurementInt = Integer.parseInt(currentMeasurement);
 			if (currentMeasurementInt > previousMeasurement) {
 				count++;
 			}
-			numberOfLines++;
 			previousMeasurement = currentMeasurementInt;
 		}
 		br.close();
@@ -43,13 +41,13 @@ public class SonarSweepOne{
 		System.out.println(count + " " + numberOfLines);
 	} */
 	/*
-	ler valor a valor ficheiro 
-	se for o primeiro 
+	ler valor a valor ficheiro
+	se for o primeiro
 		guardar
 	caso contrario
 		comparar atual com antigo
 			se o atual for maior
-				atualizar contador 
+				atualizar contador
 			caso contrario
 				nada
 	*/
