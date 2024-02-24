@@ -15,8 +15,6 @@ import java.io.IOException;
  * 7: a c f				->
  * 8: a b c d e f g		->
  * 9: a b c d f g
- *
- * 
  */
 public class SevenSegmentSearch {
 	private static String input = "desafio_8\\input.txt";
