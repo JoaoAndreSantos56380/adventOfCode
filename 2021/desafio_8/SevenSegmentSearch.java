@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+//xau
 /*
  * 0: a b c e f g
  * 1: f c				->
