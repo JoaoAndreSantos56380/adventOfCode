@@ -8,5 +8,6 @@ public class Tester {
 		}
 		System.out.println(j);
 		System.out.println(num);
+		//System.out.println(num);
 	}
 }
